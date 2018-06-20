@@ -18,7 +18,7 @@ class DoctrineContext implements Context
     private $doctrine;
 
     /**
-     * @var object|null
+     * @var \ArrayAccess|null
      */
     private $apiContext;
 
@@ -47,7 +47,7 @@ class DoctrineContext implements Context
      */
     public function iLoadDoctrineData($tableName, $connectionName = null)
     {
-        $this->apiContext->expressionLanguageData[$tableName] = $this
+        $this->apiContext[$tableName] = $this
             ->doctrine
             ->getConnection($connectionName)
             ->fetchAll('SELECT * FROM ' . $tableName);
