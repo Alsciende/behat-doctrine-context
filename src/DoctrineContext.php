@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Alsciende\Behat;
 
-use Assert\Assertion;
+use Assert\Assert;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\Environment\InitializedContextEnvironment;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
@@ -18,7 +18,7 @@ class DoctrineContext implements Context
     private $doctrine;
 
     /**
-     * @var ApiContext
+     * @var object|null
      */
     private $apiContext;
 
@@ -35,7 +35,9 @@ class DoctrineContext implements Context
         $environment = $scope->getEnvironment();
 
         if ($environment instanceof InitializedContextEnvironment) {
-            $this->apiContext = $environment->getContext(ApiContext::class);
+            if ($environment->hasContextClass('Alsciende\Behat\ApiContext')) {
+                $this->apiContext = $environment->getContext('Alsciende\Behat\ApiContext');
+            }
         }
     }
 
@@ -61,6 +63,6 @@ class DoctrineContext implements Context
             ->getConnection()
             ->fetchArray('SELECT COUNT(*) FROM ' . $tableName);
 
-        Assertion::greaterThan(0, $row[0]);
+        Assert::that($row[0])->greaterThan(0);
     }
 }
