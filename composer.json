@@ -1,0 +1,22 @@
+{
+    "name": "alsciende/behat-doctrine-context",
+    "description": "Context to help test Doctrine with Behat",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alsciende",
+            "email": "alsciende@icloud.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1.0",
+        "beberlei/assert": "^2.9",
+        "behat/behat": "^3.4",
+        "doctrine/common": "^2.8"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
