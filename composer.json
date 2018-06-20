@@ -10,13 +10,21 @@
         }
     ],
     "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Alsciende\\Behat\\": "src/"
+        }
+    },
     "require": {
         "php": ">=7.1.0",
         "beberlei/assert": "^2.9",
         "behat/behat": "^3.4",
-        "doctrine/common": "^2.8"
+        "doctrine/common": "^2.8",
+        "phpunit/phpunit": "^7.2"
     },
     "config": {
         "sort-packages": true
+    },
+    "require-dev": {
     }
 }
